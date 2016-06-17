@@ -1,11 +1,4 @@
-use_frameworks!
 
 target 'HYWebImage_Example' do
   pod 'HYWebImage', :path => '../'
-
-  target 'HYWebImage_Tests' do
-    inherit! :search_paths
-
-    pod 'FBSnapshotTestCase'
-  end
 end
