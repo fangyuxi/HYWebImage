@@ -1,0 +1,1 @@
+../../../../../HYWebImage/Classes/Cache/HYImageCache.h

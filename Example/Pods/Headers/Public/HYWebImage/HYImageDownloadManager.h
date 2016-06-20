@@ -1,0 +1,1 @@
+../../../../../HYWebImage/Classes/Loader/HYImageDownloadManager.h
