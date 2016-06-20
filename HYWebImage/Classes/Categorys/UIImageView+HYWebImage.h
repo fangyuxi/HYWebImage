@@ -1,5 +1,5 @@
 //
-//  HYImageCache.h
+//  UIImageView+HYWebImage.h
 //  Pods
 //
 //  Created by fangyuxi on 16/6/20.
@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HYCache.h"
 
-@interface HYImageCache : HYCache
+@interface UIImageView(HYWebImage)
 
 @end

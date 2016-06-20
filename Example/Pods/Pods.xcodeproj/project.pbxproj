@@ -10,6 +10,11 @@
 		05E134640CEC17B6EB42BB93C3E94924 /* HYDispatchQueuePool.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A2B5F37A0B392D88279234A93B167B /* HYDispatchQueuePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B0A6DDF5EE230793A4F5B1423369DF1 /* HYDispatchQueuePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A514DB71B83320EAC17C375E31975 /* HYDispatchQueuePool.m */; };
 		1CE07AC814D2764856070D933E5E684D /* HYWebImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AFB9E83B2259609C7D40936CF4C918 /* HYWebImage-dummy.m */; };
+		1E7E12ED1D17836700E7189A /* UIImageView+HYWebImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E7E12EB1D17836700E7189A /* UIImageView+HYWebImage.h */; };
+		1E7E12EE1D17836700E7189A /* UIImageView+HYWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7E12EC1D17836700E7189A /* UIImageView+HYWebImage.m */; };
+		1E7E12F01D1783AB00E7189A /* HYWebImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E7E12EF1D1783AB00E7189A /* HYWebImage.h */; };
+		1E7E12F41D1784C400E7189A /* HYWebImageLock.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E7E12F21D1784C400E7189A /* HYWebImageLock.h */; };
+		1E7E12F51D1784C400E7189A /* HYWebImageLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7E12F31D1784C400E7189A /* HYWebImageLock.m */; };
 		240F8F2CB515CBB8748A70317B3C39E0 /* HYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B5E19A58146909660D65676BC6DC1 /* HYMemoryCache.m */; };
 		2D69FCD13EBF643A33D4057C3FB8D546 /* HYImageDownloadManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 538E5A390251CA96B23CCE9E4C5EF041 /* HYImageDownloadManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DDFEF43DD1BF0F384E00883F9B000B4 /* HYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27D89C3D6F03C19B2FA05A37B3CEAA /* HYImage.m */; };
@@ -67,6 +72,11 @@
 		157DE11736CD5AC51E3F389116499163 /* libHYDispatchQueuePool.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHYDispatchQueuePool.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		16F5613BBB54AED030F39E2EBE4F6217 /* libHYCache.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHYCache.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D69F2DAFC86328A19EA17FC5CECE3E2 /* Pods-HYWebImage_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HYWebImage_Example-frameworks.sh"; sourceTree = "<group>"; };
+		1E7E12EB1D17836700E7189A /* UIImageView+HYWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+HYWebImage.h"; sourceTree = "<group>"; };
+		1E7E12EC1D17836700E7189A /* UIImageView+HYWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HYWebImage.m"; sourceTree = "<group>"; };
+		1E7E12EF1D1783AB00E7189A /* HYWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWebImage.h; sourceTree = "<group>"; };
+		1E7E12F21D1784C400E7189A /* HYWebImageLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWebImageLock.h; sourceTree = "<group>"; };
+		1E7E12F31D1784C400E7189A /* HYWebImageLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYWebImageLock.m; sourceTree = "<group>"; };
 		200719F812AA7D904700C9140B1559F5 /* HYWebImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYWebImage-prefix.pch"; sourceTree = "<group>"; };
 		22E4F549718FF9A49C0EF47DE9BA5341 /* HYImageDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImageDecoder.h; sourceTree = "<group>"; };
 		328B5E19A58146909660D65676BC6DC1 /* HYMemoryCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HYMemoryCache.m; path = Pod/Classes/HYMemoryCache/HYMemoryCache.m; sourceTree = "<group>"; };
@@ -163,6 +173,24 @@
 			path = "../Target Support Files/HYDispatchQueuePool";
 			sourceTree = "<group>";
 		};
+		1E7E12EA1D17830800E7189A /* Categorys */ = {
+			isa = PBXGroup;
+			children = (
+				1E7E12EB1D17836700E7189A /* UIImageView+HYWebImage.h */,
+				1E7E12EC1D17836700E7189A /* UIImageView+HYWebImage.m */,
+			);
+			path = Categorys;
+			sourceTree = "<group>";
+		};
+		1E7E12F11D1784B300E7189A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				1E7E12F21D1784C400E7189A /* HYWebImageLock.h */,
+				1E7E12F31D1784C400E7189A /* HYWebImageLock.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		22B596F88AC5FAB3BE3F988AD05A9AAC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +274,9 @@
 		827A59DC64541DEA93623ACF5E8A9598 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1E7E12EF1D1783AB00E7189A /* HYWebImage.h */,
+				1E7E12F11D1784B300E7189A /* Utility */,
+				1E7E12EA1D17830800E7189A /* Categorys */,
 				A6BA3C19D7E281A732980E39ECD201B7 /* Cache */,
 				888BD70649B74828FCF4A88411F55F9E /* Image */,
 				89AE591D5A4E2C9CCD5DC25DA945C197 /* Loader */,
@@ -347,11 +378,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				878C190112680EB0ACE37C4A3D0F04F2 /* HYImage.h in Headers */,
+				1E7E12F41D1784C400E7189A /* HYWebImageLock.h in Headers */,
 				DA6273BB30E2B9D4AE291CAA4ED57BF0 /* HYImageCache.h in Headers */,
 				EA8E947B80D87C599C7A05BF6AA33913 /* HYImageDecoder.h in Headers */,
 				2D69FCD13EBF643A33D4057C3FB8D546 /* HYImageDownloadManager.h in Headers */,
 				D3133D8BCBD99E32D2DA2251F4850F71 /* HYImageDownloadOperation.h in Headers */,
 				933BDBC4C6C7427160AE2194611D3F9B /* HYProgressiveImage.h in Headers */,
+				1E7E12F01D1783AB00E7189A /* HYWebImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +395,7 @@
 				B4B7E943619A609F84B3245B98922E9D /* HYCache.h in Headers */,
 				4CBF1B30B08B2587062BD794F92D88B1 /* HYDiskCache.h in Headers */,
 				462831D14472BA5B0788F656EA017496 /* HYMemoryCache.h in Headers */,
+				1E7E12ED1D17836700E7189A /* UIImageView+HYWebImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +525,7 @@
 			files = (
 				8115E4FE94CCB024F0CD44F089930771 /* HYCache-dummy.m in Sources */,
 				38A52CD1FF3C9C4D86394F192F4095FA /* HYCache.m in Sources */,
+				1E7E12EE1D17836700E7189A /* UIImageView+HYWebImage.m in Sources */,
 				8677AF9ED1E68B21C86186EA99AA5379 /* HYDiskCache.m in Sources */,
 				240F8F2CB515CBB8748A70317B3C39E0 /* HYMemoryCache.m in Sources */,
 			);
@@ -506,6 +541,7 @@
 				90498F8C5F6791E346922ABC30712799 /* HYImageDownloadManager.m in Sources */,
 				C3E5CCDD412374F9E899FC3C9BAD1A27 /* HYImageDownloadOperation.m in Sources */,
 				8298BB6BFD83FF3CCEC5BCBB731F8178 /* HYProgressiveImage.m in Sources */,
+				1E7E12F51D1784C400E7189A /* HYWebImageLock.m in Sources */,
 				1CE07AC814D2764856070D933E5E684D /* HYWebImage-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
