@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class HYImageCache;
+@class HYImageDownloadOperation;
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_OPTIONS(NSUInteger, HYWebImageOptions) {
@@ -51,6 +54,22 @@ typedef void(^HYWebImageDownloadProgressBlock)(double progress);
 typedef void(^HYWebImageDownloadComplete)(UIImage * __nullable image, HYWebImageCompleteType type, NSError * __nullable error);
 
 @interface HYImageDownloadManager : NSObject
+
++ (instancetype)sharedManager;
+
+@property (nonatomic, assign) NSTimeInterval timeoutInterval;
+@property (nullable, nonatomic, copy) NSDictionary *headers;
+@property (nonatomic, strong) NSOperationQueue *queue;
+@property (nullable, nonatomic, strong) HYImageCache *imageCache;
+@property (nonatomic, strong, readonly) NSURLSession *session;
+
+- (instancetype)initWithCache:(nullable HYImageCache *)cache
+               operationQueue:(nullable NSOperationQueue *)queue;
+
+- (nullable HYImageDownloadOperation *)downloadImageWithURL:(NSString *)url
+                                                     options:(HYWebImageOptions)options
+                                               progressBlock:(HYWebImageDownloadProgressBlock)progressBlock
+                                               completeBlock:(HYWebImageDownloadComplete)completeBlock;
 
 @end
 

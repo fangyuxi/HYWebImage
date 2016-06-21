@@ -7,8 +7,12 @@
 //
 
 #import "HYViewController.h"
+#import "HYWebImage.h"
 
 @interface HYViewController ()
+{
+    NSMutableArray *_array;
+}
 
 @end
 
@@ -18,6 +22,78 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+//    for (NSInteger index = 0; index < 1; ++index) {
+//        
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            
+//            [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2047158/beerhenge.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates progressBlock:^(double progress) {
+//                
+//            } completeBlock:^(UIImage * _Nullable image, HYWebImageCompleteType type, NSError * _Nullable error) {
+//                
+//            }];
+//        });
+//    }
+    
+    _array = [NSMutableArray array];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    button.backgroundColor = [UIColor redColor];
+    [button addTarget:self action:@selector(action) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    for (NSInteger index = 0; index < 100; ++index) {
+    
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            HYImageDownloadOperation *op = [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"http://img10.360buyimg.com/da/jfs/t2911/283/376299753/51387/6e52d992/57567432N41157f50.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates progressBlock:^(double progress) {
+                
+            } completeBlock:^(UIImage * _Nullable image, HYWebImageCompleteType type, NSError * _Nullable error) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    if (type != HYWebImageCompleteTypeCancel) {
+                        
+                        self.view.layer.contents = (id)image.CGImage;
+                        
+                        static NSInteger i = 1;
+                        
+                        NSLog(@"%ld Finish", i);
+                        
+                        ++i;
+                    }
+                    
+                });
+            }];
+            
+            [_array addObject:op];
+        });
+    }
+}
+
+- (void)action
+{
+    int value = arc4random() % 20;
+    
+    HYImageDownloadOperation *op = [_array objectAtIndex:value];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        
+        if (!op.isFinished) {
+            
+            [op cancel];
+            static NSInteger i = 1;
+            NSLog(@"%ld cancel", i);
+            ++i;
+        }
+        
+        
+    });
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

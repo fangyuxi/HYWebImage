@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HYImageDownloadOperation : NSOperation
+@interface HYImageDownloadOperation : NSOperation<NSURLSessionDelegate, NSURLSessionDataDelegate>
 
 - (nullable HYImageDownloadOperation *)initOperationWithRequest:(NSURLSessionDataTask *)task
                                                          option:(HYWebImageOptions)options
@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
                                                           cache:(nullable HYImageCache *)cache
                                                   progressBlock:(HYWebImageDownloadProgressBlock)progress
                                                   completeBlock:(HYWebImageDownloadComplete)complete;
+
+@property (nonatomic, strong) NSURLCredential *credential;
+@property (nonatomic, strong) NSURLSessionDataTask *task;
 
 @end
 

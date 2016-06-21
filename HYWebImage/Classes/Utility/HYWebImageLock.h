@@ -11,7 +11,7 @@
 
 // debug模式使用NSLock和NSRecursiveLock 方便调试
 // Release模式使用pthread_mutex_t 提高效率
-#define LockDebug
+//#define LockDebug
 
 typedef NS_ENUM(NSUInteger, HYWebImageLockType) {
    
