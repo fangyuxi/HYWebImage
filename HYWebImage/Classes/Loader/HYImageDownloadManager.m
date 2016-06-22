@@ -83,6 +83,11 @@
     return operation;
 }
 
+- (void)cancelAllLoading
+{
+    [self.queue cancelAllOperations];
+}
+
 #pragma mark NSURLSessionDelegate NSURLSessionTaskDelegate
 
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error

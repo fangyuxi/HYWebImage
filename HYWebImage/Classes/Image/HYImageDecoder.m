@@ -10,4 +10,15 @@
 
 @implementation HYImageDecoder
 
++ (HYImageDecoder *)decoder
+{
+    return [[[self class] alloc] init];
+}
+
+- (HYImage *)decodeImageData:(NSData *)data
+{
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
+
 @end

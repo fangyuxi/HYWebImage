@@ -8,6 +8,7 @@
 
 #import "HYViewController.h"
 #import "HYWebImage.h"
+#import "HYDispatchQueuePool.h"
 
 @interface HYViewController ()
 {
@@ -45,13 +46,13 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    for (NSInteger index = 0; index < 100; ++index) {
+    for (NSInteger index = 0; index < 1000; ++index) {
     
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async([HYDispatchQueuePool queueWithPriority:DISPATCH_QUEUE_PRIORITY_DEFAULT], ^{
             
             HYImageDownloadOperation *op = [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"http://img10.360buyimg.com/da/jfs/t2911/283/376299753/51387/6e52d992/57567432N41157f50.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates progressBlock:^(double progress) {
                 
-            } completeBlock:^(UIImage * _Nullable image, HYWebImageCompleteType type, NSError * _Nullable error) {
+            } completeBlock:^(UIImage * _Nullable image, HYWebImageCompleteType type, HYWebImageFrom from, NSError * _Nullable error) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
@@ -76,22 +77,17 @@
 
 - (void)action
 {
-    int value = arc4random() % 20;
+    int value = arc4random() % 999;
     
     HYImageDownloadOperation *op = [_array objectAtIndex:value];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    if (!op.isFinished) {
         
-        if (!op.isFinished) {
-            
-            [op cancel];
-            static NSInteger i = 1;
-            NSLog(@"%ld cancel", i);
-            ++i;
-        }
-        
-        
-    });
+        [op cancel];
+        static NSInteger i = 1;
+        NSLog(@"%ld cancel", i);
+        ++i;
+    }
     
     
 }

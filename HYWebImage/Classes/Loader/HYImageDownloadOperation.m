@@ -11,6 +11,56 @@
 
 static NSThread *NetworkThread = nil;
 
+
+
+
+@interface _HYWebImageBackgourndTask : NSObject
+
+@property (nonatomic, assign) UIBackgroundTaskIdentifier taskId;
+
++ (instancetype)_startBackgroundTask;
+- (void)_endTask;
+
+@end
+
+@implementation _HYWebImageBackgourndTask
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        self.taskId = UIBackgroundTaskInvalid;
+        self.taskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+            
+            UIBackgroundTaskIdentifier taskId = self.taskId;
+            self.taskId = UIBackgroundTaskInvalid;
+            
+            [[UIApplication sharedApplication] endBackgroundTask:taskId];
+        }];
+        return self;
+    }
+    return nil;
+}
+
++ (instancetype)_startBackgroundTask
+{
+    return [[self alloc] init];
+}
+
+- (void)_endTask
+{
+    UIBackgroundTaskIdentifier taskId = self.taskId;
+    self.taskId = UIBackgroundTaskInvalid;
+    
+    [[UIApplication sharedApplication] endBackgroundTask:taskId];
+}
+
+@end
+
+
+
+
 @interface HYImageDownloadOperation ()
 {
     HYWebImageLock *_lock;
@@ -55,10 +105,6 @@ static NSThread *NetworkThread = nil;
     if ([NetworkThread respondsToSelector:@selector(qualityOfService)])
     {
         NetworkThread.qualityOfService = NSQualityOfServiceBackground;
-    }
-    else
-    {
-        NetworkThread.threadPriority = 0.2;
     }
     
     [NetworkThread start];
@@ -117,35 +163,34 @@ static NSThread *NetworkThread = nil;
 
 - (void)_startOperation
 {
-    [_lock lock];
-    
     if ([self isCancelled])
     {
-        [_lock unLock];
         return;
     }
     
     //cache
+    if (!(_options & HYWebImageOptionIgnoreDiskCache))
+    {
+        //get image from cache
+    }
     
     //else
     self.executing = YES;
-    [_task resume];
     
+    [_lock lock];
+    [_task resume];
     [_lock unLock];
 }
 
 - (void)_cancelOperation
 {
-    [_lock lock];
-    
     if ([self isFinished])
     {
-        [_lock unLock];
         return;
     }
     
+    [_lock lock];
     [_task cancel];
-
     [_lock unLock];
 }
 
@@ -153,7 +198,7 @@ static NSThread *NetworkThread = nil;
 {
     [_lock lock];
     
-    _completeBlock([UIImage imageWithData:_data], HYWebImageCompleteTypeFinish, nil);
+    _completeBlock([UIImage imageWithData:_data], HYWebImageCompleteTypeFinish, HYWebImageFromWeb,nil);
     
     [self _done];
     [_lock unLock];
@@ -163,7 +208,7 @@ static NSThread *NetworkThread = nil;
 {
     [_lock lock];
     
-    _completeBlock([UIImage imageWithData:_data], HYWebImageCompleteTypeFinish, nil);
+    _completeBlock([UIImage imageWithData:_data], HYWebImageCompleteTypeFinish, HYWebImageFromCache,nil);
     
     [self _done];
     [_lock unLock];
@@ -173,7 +218,7 @@ static NSThread *NetworkThread = nil;
 {
     [_lock lock];
     
-    _completeBlock(nil, HYWebImageCompleteTypeError, error);
+    _completeBlock(nil, HYWebImageCompleteTypeError, HYWebImageFromNone,error);
     
     [self _done];
     [_lock unLock];
@@ -183,7 +228,7 @@ static NSThread *NetworkThread = nil;
 {
     [_lock lock];
     
-    _completeBlock(nil, HYWebImageCompleteTypeCancel, error);
+    _completeBlock(nil, HYWebImageCompleteTypeCancel, HYWebImageFromNone,error);
     
     [self _done];
     [_lock unLock];
@@ -194,18 +239,19 @@ static NSThread *NetworkThread = nil;
 // out caller
 - (void)start
 {
-    [_lock lock];
     if ([self isCancelled])
     {
-        [_lock unLock];
         return;
     }
     else if ([self isReady] && ![self isFinished] && ![self isExecuting])
     {
+        [_lock lock];
         if (!_task)
         {
-            NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorFileDoesNotExist userInfo:@{NSLocalizedDescriptionKey:@"data task in nil"}];
-            _completeBlock(nil, HYWebImageCompleteTypeError, error);
+            NSError *error = [NSError errorWithDomain:NSURLErrorDomain
+                                                 code:NSURLErrorFileDoesNotExist
+                                             userInfo:@{NSLocalizedDescriptionKey:@"data task in nil"}];
+            _completeBlock(nil, HYWebImageCompleteTypeError, HYWebImageFromNone,error);
             [self _done];
         }
         else
@@ -216,20 +262,22 @@ static NSThread *NetworkThread = nil;
                     waitUntilDone:NO
                             modes:@[NSDefaultRunLoopMode]];
         }
+        [_lock unLock];
     }
-    
-    [_lock unLock];
 }
 
 // out caller
 - (void)cancel
 {
-    [_lock lock];
     if (!self.isCancelled)
     {
         self.cancelled = YES;
+        [self performSelector:@selector(_cancelOperation)
+                     onThread:NetworkThread
+                   withObject:nil
+                waitUntilDone:NO
+                        modes:@[NSDefaultRunLoopMode]];
     }
-    [_lock unLock];
 }
 
 - (void)setFinished:(BOOL)finished
@@ -285,18 +333,41 @@ static NSThread *NetworkThread = nil;
     [_lock unLock];
 }
 
+- (void)setExecuting:(BOOL)executing
+{
+    [_lock lock];
+    
+    if (_executing != executing)
+    {
+        [self willChangeValueForKey:@"isExecuting"];
+        _executing = executing;
+        [self didChangeValueForKey:@"isExecuting"];
+    }
+    
+    [_lock unLock];
+}
+
+- (BOOL)isExecuting
+{
+    [_lock lock];
+    BOOL executing = _executing;
+    [_lock unLock];
+    
+    return executing;
+}
+
 #pragma mark NSURLSessionDelegate NSURLSessionTaskDelegate
 
 - (void)URLSession:(NSURLSession *)session
           dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data
 {
-    [_lock lock];
     if ([self isCancelled])
     {
-        [_lock unLock];
         return;
     }
+    
+    [_lock lock];
     
     if (data)
     {
@@ -315,13 +386,11 @@ static NSThread *NetworkThread = nil;
               task:(NSURLSessionTask *)task
 didCompleteWithError:(nullable NSError *)error
 {
-    [_lock lock];
-    
     if (error)
     {
-        if (error.code == -1009) //cancel
+        if (error.code == NSURLErrorCancelled) //cancel
         {
-            [self performSelector:@selector(_didRecevieError:)
+            [self performSelector:@selector(_didRecevieCancelError:)
                          onThread:NetworkThread
                        withObject:error
                     waitUntilDone:NO
@@ -344,8 +413,6 @@ didCompleteWithError:(nullable NSError *)error
                 waitUntilDone:NO
                         modes:@[NSDefaultRunLoopMode]];
     }
-    
-    [_lock unLock];
 }
 
 - (void)URLSession:(NSURLSession *)session
@@ -353,10 +420,9 @@ didCompleteWithError:(nullable NSError *)error
 didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
 {
-    [_lock lock];
+    
     if ([self isCancelled])
     {
-        [_lock unLock];
         return;
     }
     
@@ -368,7 +434,9 @@ didReceiveResponse:(NSURLResponse *)response
         NSInteger statusCode = httpResponse.statusCode;
         if (statusCode >= 300)
         {
-            error = [NSError errorWithDomain:NSURLErrorDomain code:statusCode userInfo:nil];
+            error = [NSError errorWithDomain:NSURLErrorDomain
+                                        code:statusCode
+                                    userInfo:nil];
         }
     }
     if (error)
@@ -381,14 +449,18 @@ didReceiveResponse:(NSURLResponse *)response
     }
     else
     {
+        [_lock lock];
+        
         if (response.expectedContentLength)
         {
             self.expectedDataSize = response.expectedContentLength;
         }
         _data = [NSMutableData dataWithCapacity:self.expectedDataSize > 0 ? self.expectedDataSize : 0];
+        
+        [_lock unLock];
     }
     
-    [_lock unLock];
+    
     
     completionHandler(NSURLSessionResponseAllow);
 }
@@ -464,5 +536,19 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
     _data = nil;
 }
 
+#pragma mark kvo 
+
+//关闭这三个属性的自动kvo
++ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key
+{
+    if ([key isEqualToString:@"isExecuting"] ||
+        [key isEqualToString:@"isFinished"] ||
+        [key isEqualToString:@"isCancelled"])
+    {
+        return NO;
+    }
+    
+    return [super automaticallyNotifiesObserversForKey:key];
+}
 
 @end

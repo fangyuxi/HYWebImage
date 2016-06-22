@@ -13,6 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/** 加载图片的选项 **/
 typedef NS_OPTIONS(NSUInteger, HYWebImageOptions) {
     
     //是否使用磁盘缓存
@@ -37,6 +38,7 @@ typedef NS_OPTIONS(NSUInteger, HYWebImageOptions) {
     HYWebImageOptionAvoidSetImage = 1 << 7,
 };
 
+/** complete block 回调的类型 **/
 typedef NS_ENUM(NSUInteger, HYWebImageCompleteType){
 
     //完成图片下载
@@ -49,9 +51,17 @@ typedef NS_ENUM(NSUInteger, HYWebImageCompleteType){
     HYWebImageCompleteTypeCancel
 };
 
+/** 图片来源 **/
+typedef NS_ENUM(NSUInteger, HYWebImageFrom){
+    
+    HYWebImageFromNone = 0,
+    HYWebImageFromWeb,
+    HYWebImageFromCache
+};
+
 typedef void(^HYWebImageDownloadProgressBlock)(double progress);
 
-typedef void(^HYWebImageDownloadComplete)(UIImage * __nullable image, HYWebImageCompleteType type, NSError * __nullable error);
+typedef void(^HYWebImageDownloadComplete)(UIImage * __nullable image, HYWebImageCompleteType type, HYWebImageFrom from, NSError * __nullable error);
 
 @interface HYImageDownloadManager : NSObject
 
@@ -70,6 +80,8 @@ typedef void(^HYWebImageDownloadComplete)(UIImage * __nullable image, HYWebImage
                                                      options:(HYWebImageOptions)options
                                                progressBlock:(HYWebImageDownloadProgressBlock)progressBlock
                                                completeBlock:(HYWebImageDownloadComplete)completeBlock;
+
+- (void)cancelAllLoading;
 
 @end
 
