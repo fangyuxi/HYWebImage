@@ -36,41 +36,57 @@
     CGFloat gifWidth = 0;
     CGFloat gifHeight = 0;
     CGFloat totalTime = 0;
+    NSUInteger orientationValue = 0;
+    NSUInteger loopCount = 0;
     
     for (size_t index = 0; index < frameCount; ++index)
     {
         CGImageRef frameImage = CGImageSourceCreateImageAtIndex(imageSourceRef, index, NULL);
-        if (!frameImage)
-        {
+        if (!frameImage){
+            
             continue;
         }
         CFDictionaryRef imageInfo = CGImageSourceCopyPropertiesAtIndex(imageSourceRef, index, NULL);
         
-        if (gifWidth == 0 && gifHeight == 0)
-        {
+        if (index == 0){
+            
             gifWidth =  [(NSNumber*)CFDictionaryGetValue(imageInfo, kCGImagePropertyPixelWidth) floatValue];
             gifHeight = [(NSNumber*)CFDictionaryGetValue(imageInfo, kCGImagePropertyPixelHeight) floatValue];
         }
         
-        CFDictionaryRef gifInfo = CFDictionaryGetValue(imageInfo, kCGImagePropertyJFIFDictionary);
-        if (!gifInfo)
-        {
+        CFDictionaryRef gifInfo = CFDictionaryGetValue(imageInfo, kCGImagePropertyGIFDictionary);
+        if (!gifInfo){
+            
             CFRelease(frameImage);
             CFRelease(imageInfo);
             continue;
         }
         
+        CFTypeRef loop = CFDictionaryGetValue(imageInfo, kCGImagePropertyGIFLoopCount);
+        if (loop){
+            
+            CFNumberGetValue(loop, kCFNumberNSIntegerType, &loopCount);
+        }
+        
         CGFloat unclampedDelayTime = [(NSNumber*)CFDictionaryGetValue(gifInfo, kCGImagePropertyGIFUnclampedDelayTime) floatValue];
-        if (unclampedDelayTime < 0.01)
-        {
+        if (unclampedDelayTime < 0.01){
+            
             unclampedDelayTime = 0.1;
         }
         
         totalTime += unclampedDelayTime;
         
+        CFTypeRef value = CFDictionaryGetValue(imageInfo, kCGImagePropertyOrientation);
+        if (value){
+            
+            CFNumberGetValue(value, kCFNumberNSIntegerType, &orientationValue);
+        }
+        
         HYImageGIFFrame *frame = [[HYImageGIFFrame alloc] init];
         frame.sourceImage = (__bridge id)frameImage;
-        frame.unclampedDelayTime = 0;
+        frame.unclampedDelayTime = unclampedDelayTime;
+        frame.loopCount = loopCount;
+        frame.orientation = [self imageOrientationFromEXIFValue:orientationValue];
         [imageFrames addObject:frame];
         
         CFRelease(imageInfo);

@@ -14,6 +14,7 @@
     
 }
 
+@property (nonatomic, assign) BOOL isProgressiveJPG;
 
 @end
 

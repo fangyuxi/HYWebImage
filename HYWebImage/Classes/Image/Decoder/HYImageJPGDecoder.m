@@ -36,12 +36,13 @@
     CGFloat width = 0;
     CGFloat height = 0;
     NSInteger orientationValue;
+    BOOL isJPGProgressive = NO;
     
     for (size_t index = 0; index < frameCount; ++index)
     {
         CGImageRef frameImage = CGImageSourceCreateImageAtIndex(imageSourceRef, index, NULL);
-        if (!frameImage)
-        {
+        if (!frameImage){
+            
             continue;
         }
         CFDictionaryRef imageInfo = CGImageSourceCopyPropertiesAtIndex(imageSourceRef, index, NULL);
@@ -50,6 +51,13 @@
         {
             width =  [(NSNumber*)CFDictionaryGetValue(imageInfo, kCGImagePropertyPixelWidth) floatValue];
             height = [(NSNumber*)CFDictionaryGetValue(imageInfo, kCGImagePropertyPixelHeight) floatValue];
+            
+            CFDictionaryRef jpgInfo = CFDictionaryGetValue(imageInfo, kCGImagePropertyTIFFDictionary);
+            CFTypeRef value = CFDictionaryGetValue(jpgInfo, kCGImagePropertyJFIFIsProgressive);
+            if (value) {
+                
+                 CFNumberGetValue(value, kCFNumberNSIntegerType, &isJPGProgressive);
+            }
         }
         
         CFTypeRef value = CFDictionaryGetValue(imageInfo, kCGImagePropertyOrientation);
@@ -62,6 +70,7 @@
         frame.index = index;
         frame.sourceImage = (__bridge id)frameImage;
         frame.orientation = [self imageOrientationFromEXIFValue:orientationValue];
+        frame.isProgressiveJPG = isJPGProgressive;
         [imageFrames addObject:frame];
         
         CFRelease(imageInfo);

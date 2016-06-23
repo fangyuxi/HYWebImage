@@ -8,8 +8,7 @@
 
 #import "HYImageDownloadOperation.h"
 #import "HYWebImageLock.h"
-#import "HYImageGIFDecoder.h"
-#import "HYImageJPGDecoder.h"
+#import "HYImageDecoderFactory.h"
 #import "HYProgressiveImage.h"
 
 static NSThread *NetworkThread = nil;
@@ -450,23 +449,30 @@ didCompleteWithError:(nullable NSError *)error
     }
     else // success
     {
-        [_lock lock];
-        if (self.progressiveImageDecoder) {
-            self.progressiveImageDecoder = nil;
+
+        HYImageDecoder *decoder = [HYImageDecoderFactory decoder:[_data detectType]];
+        if (decoder)
+        {
+            HYImage *image = [decoder decodeImageData:_data];
+            
+            [self performSelector:@selector(_didReceiveImageFromWeb:)
+                         onThread:NetworkThread
+                       withObject:image
+                    waitUntilDone:NO
+                            modes:@[NSDefaultRunLoopMode]];
         }
-        [_lock unLock];
-        
-        HYImageDecoder *decoder = [HYImageJPGDecoder decoder];
-        
-        [_lock lock];
-        HYImage *image = [decoder decodeImageData:_data];
-        [_lock unLock];
-        
-        [self performSelector:@selector(_didReceiveImageFromWeb:)
-                     onThread:NetworkThread
-                   withObject:image
-                waitUntilDone:NO
-                        modes:@[NSDefaultRunLoopMode]];
+        else
+        {
+            NSError *error = [NSError errorWithDomain:NSURLErrorDomain
+                                                 code:NSURLErrorDownloadDecodingFailedToComplete
+                                             userInfo:@{NSLocalizedDescriptionKey:@"不支持此图片解码"}];
+            
+            [self performSelector:@selector(_didRecevieError:)
+                         onThread:NetworkThread
+                       withObject:error
+                    waitUntilDone:NO
+                            modes:@[NSDefaultRunLoopMode]];
+        }
     }
 }
 

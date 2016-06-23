@@ -9,6 +9,7 @@
 #import "HYViewController.h"
 #import "HYWebImage.h"
 #import "HYDispatchQueuePool.h"
+#import "HYImageJPGDecoder.h"
 
 @interface HYViewController ()
 {
@@ -50,7 +51,7 @@
     
         dispatch_async([HYDispatchQueuePool queueWithPriority:DISPATCH_QUEUE_PRIORITY_DEFAULT], ^{
             
-            HYImageDownloadOperation *op = [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"http://img6.cache.netease.com/news/2016/6/23/201606230739557c16b.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates | HYWebImageOptionProgressive progressBlock:^(double progress) {
+            [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1488711/fishin.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates | HYWebImageOptionProgressive progressBlock:^(double progress) {
                 
             } completeBlock:^(HYImage * _Nullable image, HYWebImageCompleteType type, HYWebImageFrom from, NSError * _Nullable error) {
                 
@@ -73,7 +74,47 @@
             //[_array addObject:op];
         });
     }
+    
+//    HYImageJPGDecoder * decoder = [HYImageJPGDecoder new];
+//    //NSString *path = [[NSBundle mainBundle] pathForResource:@"mew_progressive" ofType:@"jpg"];
+//    UIImage *image = [UIImage imageNamed:@"mew_progressive"];
+//    NSData *data = UIImageJPEGRepresentation(image, 1);
+//    [decoder decodeImageData:data];
 }
+
+//{
+//    ColorModel = RGB;
+//    DPIHeight = 72;
+//    DPIWidth = 72;
+//    Depth = 8;
+//    Orientation = 1;
+//    PixelHeight = 600;
+//    PixelWidth = 600;
+//    "{Exif}" =     {
+//        ColorSpace = 65535;
+//        DateTimeDigitized = "2015:08:21 22:01:29";
+//        ExifVersion =         (
+//                               2,
+//                               2,
+//                               1
+//                               );
+//        PixelXDimension = 600;
+//        PixelYDimension = 600;
+//    };
+//    "{JFIF}" =     {
+//        IsProgressive = 1;
+//    };
+//    "{TIFF}" =     {
+//        DateTime = "2015:08:24 21:38:22";
+//        Orientation = 1;
+//        PhotometricInterpretation = 2;
+//        ResolutionUnit = 2;
+//        Software = "Adobe Photoshop CC 2014 (Macintosh)";
+//        XResolution = 72;
+//        YResolution = 72;
+//    };
+//}
+
 
 - (void)action
 {

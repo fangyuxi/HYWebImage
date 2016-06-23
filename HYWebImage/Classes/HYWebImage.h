@@ -14,5 +14,6 @@
 #import "HYImageDownloadManager.h"
 #import "HYImageDownloadOperation.h"
 #import "HYImage.h"
+#import "HYImageDecoderFactory.h"
 
 #endif /* HYWebImage_h */
