@@ -9,29 +9,31 @@
 /* Begin PBXBuildFile section */
 		0415510E093FC732546828CF0384E2ED /* HYImageDownloadManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FDBE3DDF637BF4081C9AF8C0D338B7AA /* HYImageDownloadManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05E134640CEC17B6EB42BB93C3E94924 /* HYDispatchQueuePool.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A2B5F37A0B392D88279234A93B167B /* HYDispatchQueuePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		08825FF14F48F35B48E0CF2276EA0E22 /* HYImageDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CFC2D96F9D0E4F6022F6664F1186079 /* HYImageDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1436C74BE8948844EF8B7DD83A52711C /* HYImageWebPDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B717413ABCC2D4D2E8A2CF8B1650620 /* HYImageWebPDecoder.m */; };
 		165B08172AAE2BABFC310590A135F9BF /* NSData+HYImageTypeDetect.h in Headers */ = {isa = PBXBuildFile; fileRef = C87D6168224AF6E277AB2B6CFE6E0758 /* NSData+HYImageTypeDetect.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B0A6DDF5EE230793A4F5B1423369DF1 /* HYDispatchQueuePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A514DB71B83320EAC17C375E31975 /* HYDispatchQueuePool.m */; };
-		1B97D236A791707DE2C9EC207CDDE0BE /* HYImageGIFDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 409A614BEA786BB47627DC3BF6CA7F5E /* HYImageGIFDecoder.m */; };
+		1E313B331D1BED3200B0B428 /* HYImageDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E313B291D1BED3200B0B428 /* HYImageDecoder.h */; };
+		1E313B341D1BED3200B0B428 /* HYImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E313B2A1D1BED3200B0B428 /* HYImageDecoder.m */; };
+		1E313B351D1BED3200B0B428 /* HYImageDecoderFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E313B2B1D1BED3200B0B428 /* HYImageDecoderFactory.h */; };
+		1E313B361D1BED3200B0B428 /* HYImageDecoderFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E313B2C1D1BED3200B0B428 /* HYImageDecoderFactory.m */; };
+		1E313B371D1BED3200B0B428 /* HYImageGIFDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E313B2D1D1BED3200B0B428 /* HYImageGIFDecoder.h */; };
+		1E313B381D1BED3200B0B428 /* HYImageGIFDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E313B2E1D1BED3200B0B428 /* HYImageGIFDecoder.m */; };
+		1E313B391D1BED3200B0B428 /* HYImageJPGDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E313B2F1D1BED3200B0B428 /* HYImageJPGDecoder.h */; };
+		1E313B3A1D1BED3200B0B428 /* HYImageJPGDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E313B301D1BED3200B0B428 /* HYImageJPGDecoder.m */; };
+		1E313B3B1D1BED3200B0B428 /* HYImageWebPDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E313B311D1BED3200B0B428 /* HYImageWebPDecoder.h */; };
+		1E313B3C1D1BED3200B0B428 /* HYImageWebPDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E313B321D1BED3200B0B428 /* HYImageWebPDecoder.m */; };
 		240F8F2CB515CBB8748A70317B3C39E0 /* HYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B5E19A58146909660D65676BC6DC1 /* HYMemoryCache.m */; };
 		38A52CD1FF3C9C4D86394F192F4095FA /* HYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6693758885938E9099889ED3E379244B /* HYCache.m */; };
-		45E5F95257FFEA2262F1361FC6D00362 /* HYImageDecoderFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A6F894CC26931A2607BEAEF761703F /* HYImageDecoderFactory.m */; };
 		462831D14472BA5B0788F656EA017496 /* HYMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = CD39099F1785054A169862E8D87D5513 /* HYMemoryCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CBF1B30B08B2587062BD794F92D88B1 /* HYDiskCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 64379F12C1551006D39FECD2472ADFA4 /* HYDiskCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		524F62C0D0A0707E9DD483CF249F9593 /* HYWebImageLock.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C295E3FF9A88CB477A43931FEC44C0 /* HYWebImageLock.m */; };
 		53A660D8143655D5E615862E4B68713C /* HYWebImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4020AE6FBAD26F64CF68E0B52DC9A417 /* HYWebImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553638F9143655AB65635EA71695C20C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		583AC8269B9159164077C731567205A8 /* HYImageJPGDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D7A18601D175134AF900A689860EB459 /* HYImageJPGDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63909A562255C79A871ACEF65F7E8341 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		6C743C34AE2C56FFB07088CE73D94FE2 /* HYImageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C74429FE92B9A9F088DDC1F3EEE1882 /* HYImageFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		72E9B4802C5BB650A2DCE99E2F09234E /* HYImageGIFDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D87E60DE9602B6037DA2614634B3B123 /* HYImageGIFDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		767CEFEC67354A4D5369A1892E1FC4B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		7A1242A1C17E72FE2B31E151592E1D24 /* HYImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C257CF9D01C85CDF3E36C135A57B3132 /* HYImageFrame.m */; };
 		7BC05E811356CAAA3C84F6EB850DC66B /* HYImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 168A329AD977778472ED408B3123FF46 /* HYImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8115E4FE94CCB024F0CD44F089930771 /* HYCache-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3CC7BBACD705CB1157904CF5E7E3FF /* HYCache-dummy.m */; };
-		8155EDC3202B569C3E4C348934613CBC /* HYImageJPGDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ED500A6536FF0580BBDB058031E32E /* HYImageJPGDecoder.m */; };
-		82ECBEA65A7AFA7D1FC129CDAEBD9E90 /* HYImageDecoderFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F49980422889BCCE49C95FC86C3ABFF1 /* HYImageDecoderFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8677AF9ED1E68B21C86186EA99AA5379 /* HYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 922F6E2C182A28C2A88B2416A6899AC0 /* HYDiskCache.m */; };
 		89645EB8E272C53DDB9EE96B7065AB58 /* HYWebImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AFB9E83B2259609C7D40936CF4C918 /* HYWebImage-dummy.m */; };
 		8C4766FE31DBF47B5C1F7B56CEFABCAF /* HYImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD85BAFCFC760E0B721735B6685321 /* HYImageCache.m */; };
@@ -39,11 +41,9 @@
 		9337AD1BA794FE8C4D98C5FD447F3BC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		A30DC06249289DAD2B8310F15505C430 /* HYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A2AF5BFABB175CCDA577A5D7F0311E /* HYImage.m */; };
 		A3B407F361B5C4B4ACE0874ECBFA4F54 /* HYWebImageLock.h in Headers */ = {isa = PBXBuildFile; fileRef = 00988DACB8B9FDC6CE9D6A7B381D0671 /* HYWebImageLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A5E7D53A95F343A313BE41817F4F4FF0 /* HYImageWebPDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 49286313F22D8F62723880A34DC424C7 /* HYImageWebPDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC1A7B0F0C406B9D5B58CAA016745028 /* HYImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 98402C40C49FCAF01BB2382635FA0CFE /* HYImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B1BE81D65A76457E9F86A945E8E6D4C5 /* HYImageDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC58656C58DCFD03455BF3F16C44FBAD /* HYImageDownloadOperation.m */; };
 		B4B7E943619A609F84B3245B98922E9D /* HYCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 616B9855FB08D878E643D85B4B825FF2 /* HYCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B4F34D58A00F1A84099DD42758441BB0 /* HYImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 968C856473F9B9AB03E288C97A2FFE27 /* HYImageDecoder.m */; };
 		CD93BD1028E52469B4CBFDE2CA03C326 /* HYImageDownloadOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B863BE449656EEF20F95DD8848DDBDE /* HYImageDownloadOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D42A86ACE50EC56E213EB6BD6A30B83D /* HYDispatchQueuePool-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EADA3563A79390C0BA533D79B9D988A /* HYDispatchQueuePool-dummy.m */; };
 		DB4C003CED1A8C8FF741689B87C33CAB /* Pods-HYWebImage_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B2305E33B64D0E8111E154E471EBA949 /* Pods-HYWebImage_Example-dummy.m */; };
@@ -87,16 +87,22 @@
 		168A329AD977778472ED408B3123FF46 /* HYImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImage.h; sourceTree = "<group>"; };
 		16F5613BBB54AED030F39E2EBE4F6217 /* libHYCache.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHYCache.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D69F2DAFC86328A19EA17FC5CECE3E2 /* Pods-HYWebImage_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HYWebImage_Example-frameworks.sh"; sourceTree = "<group>"; };
+		1E313B291D1BED3200B0B428 /* HYImageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImageDecoder.h; sourceTree = "<group>"; };
+		1E313B2A1D1BED3200B0B428 /* HYImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageDecoder.m; sourceTree = "<group>"; };
+		1E313B2B1D1BED3200B0B428 /* HYImageDecoderFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImageDecoderFactory.h; sourceTree = "<group>"; };
+		1E313B2C1D1BED3200B0B428 /* HYImageDecoderFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageDecoderFactory.m; sourceTree = "<group>"; };
+		1E313B2D1D1BED3200B0B428 /* HYImageGIFDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImageGIFDecoder.h; sourceTree = "<group>"; };
+		1E313B2E1D1BED3200B0B428 /* HYImageGIFDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageGIFDecoder.m; sourceTree = "<group>"; };
+		1E313B2F1D1BED3200B0B428 /* HYImageJPGDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImageJPGDecoder.h; sourceTree = "<group>"; };
+		1E313B301D1BED3200B0B428 /* HYImageJPGDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageJPGDecoder.m; sourceTree = "<group>"; };
+		1E313B311D1BED3200B0B428 /* HYImageWebPDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImageWebPDecoder.h; sourceTree = "<group>"; };
+		1E313B321D1BED3200B0B428 /* HYImageWebPDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageWebPDecoder.m; sourceTree = "<group>"; };
 		200719F812AA7D904700C9140B1559F5 /* HYWebImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYWebImage-prefix.pch"; sourceTree = "<group>"; };
 		2611CC70EE95B3239E32C73949FF56FF /* NSData+HYImageTypeDetect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSData+HYImageTypeDetect.m"; sourceTree = "<group>"; };
 		328B5E19A58146909660D65676BC6DC1 /* HYMemoryCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HYMemoryCache.m; path = Pod/Classes/HYMemoryCache/HYMemoryCache.m; sourceTree = "<group>"; };
-		33ED500A6536FF0580BBDB058031E32E /* HYImageJPGDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HYImageJPGDecoder.m; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		3EADA3563A79390C0BA533D79B9D988A /* HYDispatchQueuePool-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HYDispatchQueuePool-dummy.m"; sourceTree = "<group>"; };
 		4020AE6FBAD26F64CF68E0B52DC9A417 /* HYWebImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYWebImage.h; sourceTree = "<group>"; };
-		409A614BEA786BB47627DC3BF6CA7F5E /* HYImageGIFDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HYImageGIFDecoder.m; sourceTree = "<group>"; };
-		49286313F22D8F62723880A34DC424C7 /* HYImageWebPDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImageWebPDecoder.h; sourceTree = "<group>"; };
-		4CFC2D96F9D0E4F6022F6664F1186079 /* HYImageDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImageDecoder.h; sourceTree = "<group>"; };
 		4D3CC7BBACD705CB1157904CF5E7E3FF /* HYCache-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HYCache-dummy.m"; sourceTree = "<group>"; };
 		4E9FB2634BF9CEFC00E34266B01C2A4B /* HYDispatchQueuePool-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYDispatchQueuePool-prefix.pch"; sourceTree = "<group>"; };
 		510EBA5314171803852911F115BB06F4 /* Pods-HYWebImage_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HYWebImage_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,13 +112,10 @@
 		6B863BE449656EEF20F95DD8848DDBDE /* HYImageDownloadOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImageDownloadOperation.h; sourceTree = "<group>"; };
 		6F201EF98A0D7E33730C846986602B3A /* Pods-HYWebImage_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HYWebImage_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		71866E36BC8EF150745CC8AEED8FECAE /* UIImageView+HYWebImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImageView+HYWebImage.h"; sourceTree = "<group>"; };
-		7B717413ABCC2D4D2E8A2CF8B1650620 /* HYImageWebPDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HYImageWebPDecoder.m; sourceTree = "<group>"; };
 		7DB511804A8F454769805A72A110A8AA /* Pods-HYWebImage_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HYWebImage_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		893A514DB71B83320EAC17C375E31975 /* HYDispatchQueuePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HYDispatchQueuePool.m; path = HYDispatchQueuePool/Classes/HYDispatchQueuePool.m; sourceTree = "<group>"; };
 		922F6E2C182A28C2A88B2416A6899AC0 /* HYDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HYDiskCache.m; path = Pod/Classes/HYDiskCache/HYDiskCache.m; sourceTree = "<group>"; };
-		968C856473F9B9AB03E288C97A2FFE27 /* HYImageDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HYImageDecoder.m; sourceTree = "<group>"; };
 		98402C40C49FCAF01BB2382635FA0CFE /* HYImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImageCache.h; sourceTree = "<group>"; };
-		98A6F894CC26931A2607BEAEF761703F /* HYImageDecoderFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HYImageDecoderFactory.m; sourceTree = "<group>"; };
 		9C74429FE92B9A9F088DDC1F3EEE1882 /* HYImageFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImageFrame.h; sourceTree = "<group>"; };
 		A1A2EB4FE1CA3812D4462BD9ECDF164B /* UIImageView+HYWebImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HYWebImage.m"; sourceTree = "<group>"; };
 		B2305E33B64D0E8111E154E471EBA949 /* Pods-HYWebImage_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HYWebImage_Example-dummy.m"; sourceTree = "<group>"; };
@@ -129,13 +132,10 @@
 		C87D6168224AF6E277AB2B6CFE6E0758 /* NSData+HYImageTypeDetect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSData+HYImageTypeDetect.h"; sourceTree = "<group>"; };
 		CC58656C58DCFD03455BF3F16C44FBAD /* HYImageDownloadOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HYImageDownloadOperation.m; sourceTree = "<group>"; };
 		CD39099F1785054A169862E8D87D5513 /* HYMemoryCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HYMemoryCache.h; path = Pod/Classes/HYMemoryCache/HYMemoryCache.h; sourceTree = "<group>"; };
-		D7A18601D175134AF900A689860EB459 /* HYImageJPGDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImageJPGDecoder.h; sourceTree = "<group>"; };
-		D87E60DE9602B6037DA2614634B3B123 /* HYImageGIFDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImageGIFDecoder.h; sourceTree = "<group>"; };
 		DDB55C8FB50ACC346FE2C1118C40F6A5 /* HYDispatchQueuePool.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HYDispatchQueuePool.xcconfig; sourceTree = "<group>"; };
 		E47BDAC50D167F72201FD8BEAAAFF566 /* HYCache.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HYCache.xcconfig; sourceTree = "<group>"; };
 		E83D7D00FE56F13EB5168359FFCDD9FA /* HYImageDownloadManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HYImageDownloadManager.m; sourceTree = "<group>"; };
 		E9283AD6CE6757100DD30C43FC95691F /* libHYWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHYWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F49980422889BCCE49C95FC86C3ABFF1 /* HYImageDecoderFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImageDecoderFactory.h; sourceTree = "<group>"; };
 		FC4046469D061759BBD501FED3D1FFA1 /* Pods-HYWebImage_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HYWebImage_Example-resources.sh"; sourceTree = "<group>"; };
 		FDBE3DDF637BF4081C9AF8C0D338B7AA /* HYImageDownloadManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYImageDownloadManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				4020AE6FBAD26F64CF68E0B52DC9A417 /* HYWebImage.h */,
+				1E313B281D1BED3200B0B428 /* Decoder */,
 				F4DCF16BAD48FEC6AEC71109BD3ACBBE /* Cache */,
 				7C763409D794E3E22DC0ADAC2D9E862F /* Categorys */,
 				6B17CEC71F719B3DEA9EFBB9F18C4C98 /* Image */,
@@ -219,6 +220,23 @@
 				2611CC70EE95B3239E32C73949FF56FF /* NSData+HYImageTypeDetect.m */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		1E313B281D1BED3200B0B428 /* Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				1E313B291D1BED3200B0B428 /* HYImageDecoder.h */,
+				1E313B2A1D1BED3200B0B428 /* HYImageDecoder.m */,
+				1E313B2B1D1BED3200B0B428 /* HYImageDecoderFactory.h */,
+				1E313B2C1D1BED3200B0B428 /* HYImageDecoderFactory.m */,
+				1E313B2D1D1BED3200B0B428 /* HYImageGIFDecoder.h */,
+				1E313B2E1D1BED3200B0B428 /* HYImageGIFDecoder.m */,
+				1E313B2F1D1BED3200B0B428 /* HYImageJPGDecoder.h */,
+				1E313B301D1BED3200B0B428 /* HYImageJPGDecoder.m */,
+				1E313B311D1BED3200B0B428 /* HYImageWebPDecoder.h */,
+				1E313B321D1BED3200B0B428 /* HYImageWebPDecoder.m */,
+			);
+			path = Decoder;
 			sourceTree = "<group>";
 		};
 		22B596F88AC5FAB3BE3F988AD05A9AAC /* Pods */ = {
@@ -286,23 +304,6 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		53C915D967850CDB3FD0B33562C75575 /* Decoder */ = {
-			isa = PBXGroup;
-			children = (
-				4CFC2D96F9D0E4F6022F6664F1186079 /* HYImageDecoder.h */,
-				968C856473F9B9AB03E288C97A2FFE27 /* HYImageDecoder.m */,
-				D87E60DE9602B6037DA2614634B3B123 /* HYImageGIFDecoder.h */,
-				409A614BEA786BB47627DC3BF6CA7F5E /* HYImageGIFDecoder.m */,
-				D7A18601D175134AF900A689860EB459 /* HYImageJPGDecoder.h */,
-				33ED500A6536FF0580BBDB058031E32E /* HYImageJPGDecoder.m */,
-				49286313F22D8F62723880A34DC424C7 /* HYImageWebPDecoder.h */,
-				7B717413ABCC2D4D2E8A2CF8B1650620 /* HYImageWebPDecoder.m */,
-				F49980422889BCCE49C95FC86C3ABFF1 /* HYImageDecoderFactory.h */,
-				98A6F894CC26931A2607BEAEF761703F /* HYImageDecoderFactory.m */,
-			);
-			path = Decoder;
-			sourceTree = "<group>";
-		};
 		6B17CEC71F719B3DEA9EFBB9F18C4C98 /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,7 +313,6 @@
 				C257CF9D01C85CDF3E36C135A57B3132 /* HYImageFrame.m */,
 				B3B9A635AE444A386B0B907385FAC6D4 /* HYProgressiveImage.h */,
 				C07BC65963D71A09EB9D33C551E5B01C /* HYProgressiveImage.m */,
-				53C915D967850CDB3FD0B33562C75575 /* Decoder */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -432,20 +432,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BC05E811356CAAA3C84F6EB850DC66B /* HYImage.h in Headers */,
+				1E313B331D1BED3200B0B428 /* HYImageDecoder.h in Headers */,
 				AC1A7B0F0C406B9D5B58CAA016745028 /* HYImageCache.h in Headers */,
-				08825FF14F48F35B48E0CF2276EA0E22 /* HYImageDecoder.h in Headers */,
-				82ECBEA65A7AFA7D1FC129CDAEBD9E90 /* HYImageDecoderFactory.h in Headers */,
+				1E313B371D1BED3200B0B428 /* HYImageGIFDecoder.h in Headers */,
 				0415510E093FC732546828CF0384E2ED /* HYImageDownloadManager.h in Headers */,
+				1E313B3B1D1BED3200B0B428 /* HYImageWebPDecoder.h in Headers */,
 				CD93BD1028E52469B4CBFDE2CA03C326 /* HYImageDownloadOperation.h in Headers */,
 				6C743C34AE2C56FFB07088CE73D94FE2 /* HYImageFrame.h in Headers */,
-				72E9B4802C5BB650A2DCE99E2F09234E /* HYImageGIFDecoder.h in Headers */,
-				583AC8269B9159164077C731567205A8 /* HYImageJPGDecoder.h in Headers */,
-				A5E7D53A95F343A313BE41817F4F4FF0 /* HYImageWebPDecoder.h in Headers */,
 				DE708288B75F32E79D875AC1D7B74011 /* HYProgressiveImage.h in Headers */,
 				53A660D8143655D5E615862E4B68713C /* HYWebImage.h in Headers */,
 				A3B407F361B5C4B4ACE0874ECBFA4F54 /* HYWebImageLock.h in Headers */,
+				1E313B391D1BED3200B0B428 /* HYImageJPGDecoder.h in Headers */,
 				165B08172AAE2BABFC310590A135F9BF /* NSData+HYImageTypeDetect.h in Headers */,
 				DB5AD955B769FFC8CDD95278266351EE /* UIImageView+HYWebImage.h in Headers */,
+				1E313B351D1BED3200B0B428 /* HYImageDecoderFactory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,20 +584,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E313B3C1D1BED3200B0B428 /* HYImageWebPDecoder.m in Sources */,
 				A30DC06249289DAD2B8310F15505C430 /* HYImage.m in Sources */,
 				8C4766FE31DBF47B5C1F7B56CEFABCAF /* HYImageCache.m in Sources */,
-				B4F34D58A00F1A84099DD42758441BB0 /* HYImageDecoder.m in Sources */,
-				45E5F95257FFEA2262F1361FC6D00362 /* HYImageDecoderFactory.m in Sources */,
 				FC08416856A10D21F8F3F25934F5B8AF /* HYImageDownloadManager.m in Sources */,
 				B1BE81D65A76457E9F86A945E8E6D4C5 /* HYImageDownloadOperation.m in Sources */,
 				7A1242A1C17E72FE2B31E151592E1D24 /* HYImageFrame.m in Sources */,
-				1B97D236A791707DE2C9EC207CDDE0BE /* HYImageGIFDecoder.m in Sources */,
-				8155EDC3202B569C3E4C348934613CBC /* HYImageJPGDecoder.m in Sources */,
-				1436C74BE8948844EF8B7DD83A52711C /* HYImageWebPDecoder.m in Sources */,
 				FD63C03FB8D76195FC0C57EBA4FE52A1 /* HYProgressiveImage.m in Sources */,
 				89645EB8E272C53DDB9EE96B7065AB58 /* HYWebImage-dummy.m in Sources */,
+				1E313B341D1BED3200B0B428 /* HYImageDecoder.m in Sources */,
+				1E313B361D1BED3200B0B428 /* HYImageDecoderFactory.m in Sources */,
 				524F62C0D0A0707E9DD483CF249F9593 /* HYWebImageLock.m in Sources */,
 				F37A903D0C37F24EE806E04D4BED2A10 /* NSData+HYImageTypeDetect.m in Sources */,
+				1E313B3A1D1BED3200B0B428 /* HYImageJPGDecoder.m in Sources */,
+				1E313B381D1BED3200B0B428 /* HYImageGIFDecoder.m in Sources */,
 				8E1DDEE364E7463FAE48F885396DF8F9 /* UIImageView+HYWebImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
