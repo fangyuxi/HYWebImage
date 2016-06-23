@@ -8,6 +8,7 @@
 
 #import "HYImageDecoder.h"
 
+// no thread-safe
 @interface HYImageGIFFrame : HYImageFrame
 {
     
@@ -17,6 +18,7 @@
 
 @end
 
+// no thread-safe
 @interface HYImageGIFDecoder : HYImageDecoder
 
 @end

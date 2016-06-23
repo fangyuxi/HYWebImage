@@ -10,6 +10,7 @@
 
 @class HYImageCache;
 @class HYImageDownloadOperation;
+@class HYImage;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -61,7 +62,7 @@ typedef NS_ENUM(NSUInteger, HYWebImageFrom){
 
 typedef void(^HYWebImageDownloadProgressBlock)(double progress);
 
-typedef void(^HYWebImageDownloadComplete)(UIImage * __nullable image, HYWebImageCompleteType type, HYWebImageFrom from, NSError * __nullable error);
+typedef void(^HYWebImageDownloadComplete)(HYImage * __nullable image, HYWebImageCompleteType type, HYWebImageFrom from, NSError * __nullable error);
 
 @interface HYImageDownloadManager : NSObject
 

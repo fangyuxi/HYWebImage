@@ -12,6 +12,8 @@
 
 @interface HYImageFrame : NSObject
 
-@property (nonatomic, strong) UIImage *sourceImage;
+@property (nonatomic, strong) id sourceImage;
+@property (nonatomic, assign) NSUInteger index;
+@property (nonatomic, assign) UIImageOrientation orientation;
 
 @end

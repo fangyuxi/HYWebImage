@@ -1,0 +1,1 @@
+../../../../../HYWebImage/Classes/Utility/NSData+HYImageTypeDetect.h

@@ -46,23 +46,23 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    for (NSInteger index = 0; index < 1000; ++index) {
+    for (NSInteger index = 0; index < 1; ++index) {
     
         dispatch_async([HYDispatchQueuePool queueWithPriority:DISPATCH_QUEUE_PRIORITY_DEFAULT], ^{
             
-            HYImageDownloadOperation *op = [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"http://img10.360buyimg.com/da/jfs/t2911/283/376299753/51387/6e52d992/57567432N41157f50.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates progressBlock:^(double progress) {
+            HYImageDownloadOperation *op = [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"http://img6.cache.netease.com/news/2016/6/23/201606230739557c16b.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates | HYWebImageOptionProgressive progressBlock:^(double progress) {
                 
-            } completeBlock:^(UIImage * _Nullable image, HYWebImageCompleteType type, HYWebImageFrom from, NSError * _Nullable error) {
+            } completeBlock:^(HYImage * _Nullable image, HYWebImageCompleteType type, HYWebImageFrom from, NSError * _Nullable error) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    if (type != HYWebImageCompleteTypeCancel) {
+                    if (type == HYWebImageCompleteTypeFinish || type == HYWebImageCompleteTypeProgress) {
                         
-                        self.view.layer.contents = (id)image.CGImage;
+                        self.view.layer.contents = (id)image.singleImage.CGImage;
                         
                         static NSInteger i = 1;
                         
-                        NSLog(@"%ld Finish", i);
+                        NSLog(@"%ld Finish", (long)i);
                         
                         ++i;
                     }
@@ -70,7 +70,7 @@
                 });
             }];
             
-            [_array addObject:op];
+            //[_array addObject:op];
         });
     }
 }
@@ -85,7 +85,7 @@
         
         [op cancel];
         static NSInteger i = 1;
-        NSLog(@"%ld cancel", i);
+        NSLog(@"%ld cancel", (long)i);
         ++i;
     }
     

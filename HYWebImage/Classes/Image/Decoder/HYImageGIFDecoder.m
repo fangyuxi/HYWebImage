@@ -19,6 +19,8 @@
 
 - (HYImage *)decodeImageData:(NSData *)data
 {
+    CFTimeInterval start = CACurrentMediaTime();
+    
     CGImageSourceRef imageSourceRef = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
     if (!imageSourceRef)
     {
@@ -50,7 +52,7 @@
             gifHeight = [(NSNumber*)CFDictionaryGetValue(imageInfo, kCGImagePropertyPixelHeight) floatValue];
         }
         
-        CFDictionaryRef gifInfo = CFDictionaryGetValue(imageInfo, kCGImagePropertyGIFDictionary);
+        CFDictionaryRef gifInfo = CFDictionaryGetValue(imageInfo, kCGImagePropertyJFIFDictionary);
         if (!gifInfo)
         {
             CFRelease(frameImage);
@@ -68,7 +70,7 @@
         
         HYImageGIFFrame *frame = [[HYImageGIFFrame alloc] init];
         frame.sourceImage = (__bridge id)frameImage;
-        frame.unclampedDelayTime = unclampedDelayTime;
+        frame.unclampedDelayTime = 0;
         [imageFrames addObject:frame];
         
         CFRelease(imageInfo);
@@ -81,7 +83,17 @@
         return nil;
     }
     
-    return nil;
+    CFTimeInterval finish = CACurrentMediaTime();
+    
+    CFTimeInterval f = finish - start;
+    printf("Decode Gif:   %8.2f\n", f * 1000);
+    
+    HYImage *image = [[HYImage alloc] initWithFrames:imageFrames];
+    image.totalTime = totalTime;
+    image.width = gifWidth;
+    image.height = gifHeight;
+    
+    return image;
 }
 
 @end

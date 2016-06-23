@@ -8,6 +8,9 @@
 
 #import "HYImageDownloadOperation.h"
 #import "HYWebImageLock.h"
+#import "HYImageGIFDecoder.h"
+#import "HYImageJPGDecoder.h"
+#import "HYProgressiveImage.h"
 
 static NSThread *NetworkThread = nil;
 
@@ -23,7 +26,13 @@ static NSThread *NetworkThread = nil;
 
 @end
 
+
 @implementation _HYWebImageBackgourndTask
+
+- (void)dealloc
+{
+    
+}
 
 - (instancetype)init
 {
@@ -58,7 +67,11 @@ static NSThread *NetworkThread = nil;
 
 @end
 
+@interface HYImageDownloadOperation ()
 
+@property (nonatomic, strong) HYProgressiveImage *progressiveImageDecoder;
+
+@end
 
 
 @interface HYImageDownloadOperation ()
@@ -194,11 +207,11 @@ static NSThread *NetworkThread = nil;
     [_lock unLock];
 }
 
-- (void)_didReceiveImageFromWeb
+- (void)_didReceiveImageFromWeb:(HYImage *)image
 {
     [_lock lock];
     
-    _completeBlock([UIImage imageWithData:_data], HYWebImageCompleteTypeFinish, HYWebImageFromWeb,nil);
+    _completeBlock(image, HYWebImageCompleteTypeFinish, HYWebImageFromWeb,nil);
     
     [self _done];
     [_lock unLock];
@@ -208,7 +221,7 @@ static NSThread *NetworkThread = nil;
 {
     [_lock lock];
     
-    _completeBlock([UIImage imageWithData:_data], HYWebImageCompleteTypeFinish, HYWebImageFromCache,nil);
+    _completeBlock(nil, HYWebImageCompleteTypeFinish, HYWebImageFromCache,nil);
     
     [self _done];
     [_lock unLock];
@@ -373,10 +386,40 @@ static NSThread *NetworkThread = nil;
     {
         [_data appendData:data];
         
-        if (_progressBlock)
-        {
+        if (_progressBlock){
+            
             _progressBlock([_data length] / (double)self.expectedDataSize);
         }
+        
+        if (!(_options & HYWebImageOptionProgressive)){
+            
+            return;
+        }
+        
+        if (data.length <= 16){
+        
+            return;
+        }
+        if (_expectedDataSize > 0 && data.length >= _expectedDataSize * 0.99) {
+        
+            return;
+        }
+        
+        HYImageType type = [_data detectType];
+        
+        if (type == HYImageTypeUnknown ||
+            type == HYImageTypeWebP) {
+            
+            return;
+        }
+        
+        if (!self.progressiveImageDecoder) {
+            
+            self.progressiveImageDecoder = [[HYProgressiveImage alloc] init];
+        }
+        
+        HYImage *image = [self.progressiveImageDecoder updateImageData:data expectedBytes:self.expectedDataSize];
+        _completeBlock(image, HYWebImageCompleteTypeProgress, HYWebImageFromWeb, nil);
     }
     
     [_lock unLock];
@@ -407,9 +450,21 @@ didCompleteWithError:(nullable NSError *)error
     }
     else // success
     {
-        [self performSelector:@selector(_didReceiveImageFromWeb)
+        [_lock lock];
+        if (self.progressiveImageDecoder) {
+            self.progressiveImageDecoder = nil;
+        }
+        [_lock unLock];
+        
+        HYImageDecoder *decoder = [HYImageJPGDecoder decoder];
+        
+        [_lock lock];
+        HYImage *image = [decoder decodeImageData:_data];
+        [_lock unLock];
+        
+        [self performSelector:@selector(_didReceiveImageFromWeb:)
                      onThread:NetworkThread
-                   withObject:nil
+                   withObject:image
                 waitUntilDone:NO
                         modes:@[NSDefaultRunLoopMode]];
     }

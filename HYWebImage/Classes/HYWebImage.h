@@ -9,7 +9,10 @@
 #ifndef HYWebImage_h
 #define HYWebImage_h
 
+// black sheep
+
 #import "HYImageDownloadManager.h"
 #import "HYImageDownloadOperation.h"
+#import "HYImage.h"
 
 #endif /* HYWebImage_h */

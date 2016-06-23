@@ -12,10 +12,13 @@
 
 /** 解码器的基类 **/
 
+// no thread-safe
 @interface HYImageDecoder : NSObject
 
 + (HYImageDecoder *)decoder;
 
 - (HYImage *)decodeImageData:(NSData *)data;
+
+- (UIImageOrientation)imageOrientationFromEXIFValue:(NSInteger)value;
 
 @end
