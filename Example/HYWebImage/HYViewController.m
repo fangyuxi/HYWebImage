@@ -14,6 +14,7 @@
 @interface HYViewController ()
 {
     NSMutableArray *_array;
+    UIImageView *imageView;
 }
 
 @end
@@ -23,19 +24,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:imageView];
     
-//    for (NSInteger index = 0; index < 1; ++index) {
-//        
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            
-//            [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2047158/beerhenge.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates progressBlock:^(double progress) {
-//                
-//            } completeBlock:^(UIImage * _Nullable image, HYWebImageCompleteType type, NSError * _Nullable error) {
-//                
-//            }];
-//        });
-//    }
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.backgroundColor = [UIColor whiteColor];
     
     _array = [NSMutableArray array];
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
@@ -51,7 +44,9 @@
     
         dispatch_async([HYDispatchQueuePool queueWithPriority:DISPATCH_QUEUE_PRIORITY_DEFAULT], ^{
             
-            [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1488711/fishin.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates | HYWebImageOptionProgressive progressBlock:^(double progress) {
+            [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"http://littlesvr.ca/apng/images/Contact.webp" options:HYWebImageOptionAllowInvalidSSLCertificates | HYWebImageOptionProgressive progressBlock:^(double progress) {
+                
+                NSLog(@"%f", progress);
                 
             } completeBlock:^(HYImage * _Nullable image, HYWebImageCompleteType type, HYWebImageFrom from, NSError * _Nullable error) {
                 
@@ -59,7 +54,7 @@
                     
                     if (type == HYWebImageCompleteTypeFinish || type == HYWebImageCompleteTypeProgress) {
                         
-                        self.view.layer.contents = (id)image.singleImage.CGImage;
+                        imageView.image = image.singleImage;
                         
                         static NSInteger i = 1;
                         

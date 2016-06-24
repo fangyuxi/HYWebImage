@@ -1,6 +1,6 @@
-
 target 'HYWebImage_Example' do
   pod 'HYWebImage', :path => '../'
   pod 'HYCache'
   pod 'HYDispatchQueuePool'
+  pod 'libwebp', '~> 0.5.0'
 end

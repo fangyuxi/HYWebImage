@@ -20,8 +20,8 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		689E49A32168A2B35F76B120 /* libPods-HYWebImage_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8BDD12878BBECA5B9B7894 /* libPods-HYWebImage_Example.a */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		DAF938D5116FF59012B7BBA2 /* libPods-HYWebImage_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC290F02F3875D1953725FB2 /* libPods-HYWebImage_Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E313B4F1D1D0B2B00B0B428 /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebP.framework; path = ../HYWebImage/Classes/WebP.framework; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* HYWebImage_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYWebImage_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,10 +58,10 @@
 		634F86A5BDB031FDEA05A21B /* Pods-HYWebImage_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYWebImage_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-HYWebImage_Example/Pods-HYWebImage_Example.release.xcconfig"; sourceTree = "<group>"; };
 		81E71648466395EBF9493ACB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		AC290F02F3875D1953725FB2 /* libPods-HYWebImage_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HYWebImage_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83324B4090723BC719EB9A3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C60C95F4133D960D17BBAABD /* Pods-HYWebImage_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYWebImage_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYWebImage_Example/Pods-HYWebImage_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E5D7F2523ECC36FF07CD626B /* HYWebImage.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HYWebImage.podspec; path = ../HYWebImage.podspec; sourceTree = "<group>"; };
+		ED8BDD12878BBECA5B9B7894 /* libPods-HYWebImage_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HYWebImage_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +72,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				DAF938D5116FF59012B7BBA2 /* libPods-HYWebImage_Example.a in Frameworks */,
+				689E49A32168A2B35F76B120 /* libPods-HYWebImage_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,11 +113,12 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E313B4F1D1D0B2B00B0B428 /* WebP.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				AC290F02F3875D1953725FB2 /* libPods-HYWebImage_Example.a */,
+				ED8BDD12878BBECA5B9B7894 /* libPods-HYWebImage_Example.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

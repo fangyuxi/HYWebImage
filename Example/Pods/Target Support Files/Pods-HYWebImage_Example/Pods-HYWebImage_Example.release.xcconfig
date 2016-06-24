@@ -1,5 +1,5 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/HYCache" "${PODS_ROOT}/Headers/Public/HYDispatchQueuePool" "${PODS_ROOT}/Headers/Public/HYWebImage"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/HYCache" -isystem "${PODS_ROOT}/Headers/Public/HYDispatchQueuePool" -isystem "${PODS_ROOT}/Headers/Public/HYWebImage"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"HYCache" -l"HYDispatchQueuePool" -l"HYWebImage"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/HYCache" "${PODS_ROOT}/Headers/Public/HYDispatchQueuePool" "${PODS_ROOT}/Headers/Public/HYWebImage" "${PODS_ROOT}/Headers/Public/libwebp"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/HYCache" -isystem "${PODS_ROOT}/Headers/Public/HYDispatchQueuePool" -isystem "${PODS_ROOT}/Headers/Public/HYWebImage" -isystem "${PODS_ROOT}/Headers/Public/libwebp"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"HYCache" -l"HYDispatchQueuePool" -l"HYWebImage" -l"libwebp"
 PODS_ROOT = ${SRCROOT}/Pods

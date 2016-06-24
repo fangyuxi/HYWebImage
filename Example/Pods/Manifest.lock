@@ -2,11 +2,36 @@ PODS:
   - HYCache (0.4)
   - HYDispatchQueuePool (0.0.1)
   - HYWebImage (0.1.0)
+  - libwebp (0.5.0):
+    - libwebp/core (= 0.5.0)
+    - libwebp/dec (= 0.5.0)
+    - libwebp/demux (= 0.5.0)
+    - libwebp/dsp (= 0.5.0)
+    - libwebp/enc (= 0.5.0)
+    - libwebp/mux (= 0.5.0)
+    - libwebp/utils (= 0.5.0)
+    - libwebp/webp (= 0.5.0)
+  - libwebp/core (0.5.0):
+    - libwebp/webp
+  - libwebp/dec (0.5.0):
+    - libwebp/core
+  - libwebp/demux (0.5.0):
+    - libwebp/core
+  - libwebp/dsp (0.5.0):
+    - libwebp/core
+  - libwebp/enc (0.5.0):
+    - libwebp/core
+  - libwebp/mux (0.5.0):
+    - libwebp/core
+  - libwebp/utils (0.5.0):
+    - libwebp/core
+  - libwebp/webp (0.5.0)
 
 DEPENDENCIES:
   - HYCache
   - HYDispatchQueuePool
   - HYWebImage (from `../`)
+  - libwebp (~> 0.5.0)
 
 EXTERNAL SOURCES:
   HYWebImage:
@@ -15,6 +40,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   HYCache: 6f6d8d576b0dd66547c1c586586fec50a33e838a
   HYDispatchQueuePool: e97b32d83e8f1ef8dd85225f1254c008a7580f4e
-  HYWebImage: 09c4ecf58c5d8705f71ba1560444383655186fb2
+  HYWebImage: c6b23656b6746092f6f4dcf1554efcfe1ffd9bd8
+  libwebp: 68ba2001ba6806ee52837ebd77a551a0b6567e4e
 
 COCOAPODS: 0.39.0

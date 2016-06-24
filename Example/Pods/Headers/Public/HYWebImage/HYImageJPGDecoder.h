@@ -1,1 +1,1 @@
-../../../../../HYWebImage/Classes/Image/Decoder/HYImageJPGDecoder.h
+../../../../../HYWebImage/Classes/Decoder/HYImageJPGDecoder.h

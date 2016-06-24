@@ -392,15 +392,18 @@ static NSThread *NetworkThread = nil;
         
         if (!(_options & HYWebImageOptionProgressive)){
             
+            [_lock unLock];
             return;
         }
         
         if (data.length <= 16){
         
+            [_lock unLock];
             return;
         }
         if (_expectedDataSize > 0 && data.length >= _expectedDataSize * 0.99) {
         
+            [_lock unLock];
             return;
         }
         
@@ -409,6 +412,7 @@ static NSThread *NetworkThread = nil;
         if (type == HYImageTypeUnknown ||
             type == HYImageTypeWebP) {
             
+            [_lock unLock];
             return;
         }
         
