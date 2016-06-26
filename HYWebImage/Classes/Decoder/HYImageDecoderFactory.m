@@ -13,20 +13,22 @@
 + (HYImageDecoder *)decoder:(HYImageType)type
 {
     switch (type) {
+            
         case HYImageTypeGIF:
         return [HYImageGIFDecoder new];
-        break;
             
         case HYImageTypeJPEG:
+        case HYImageTypeJPEG2000:
         return [HYImageJPGDecoder new];
-        break;
             
         case HYImageTypeWebP:
         return [HYImageWebPDecoder new];
-        break;
+            
+        case HYImageTypePNG:
+        return [HYImagePNGDecoder new];
             
         default:
-            break;
+        return nil;
     }
     return nil;
 }

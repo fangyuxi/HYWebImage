@@ -10,6 +10,7 @@
 #import "HYImageJPGDecoder.h"
 #import "HYImageGIFDecoder.h"
 #import "HYImageWebPDecoder.h"
+#import "HYImagePNGDecoder.h"
 
 // 所有的解码器都不是线程安全的，在多线程环境中，请在外部使用锁
 
