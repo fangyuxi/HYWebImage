@@ -58,7 +58,8 @@
 /**
  *  动图的时间
  */
-@property (nonatomic, assign) NSTimeInterval totalTime;
+@property (nonatomic, assign) NSTimeInterval animationDuration;
+@property (nonatomic, assign) NSUInteger loopCount;
 
 
 @end

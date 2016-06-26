@@ -69,10 +69,10 @@ static void _freeWebpFrameImageData(void *info, const void *data, size_t size)
         do {
             
             WebPData frame = iter.fragment;
-            CGFloat delayTime = iter.duration / 1000.0;
-            if (delayTime < 0.01){
+            CGFloat frameDuration = iter.duration / 1000.0;
+            if (frameDuration < 0.01){
             
-                delayTime = 0.1;
+                frameDuration = 0.1;
             }
             
             VP8StatusCode status = WebPDecode(frame.bytes,
@@ -116,8 +116,9 @@ static void _freeWebpFrameImageData(void *info, const void *data, size_t size)
             HYImageWebPFrame *imageFrame = [[HYImageWebPFrame alloc] init];
             imageFrame.width = imageWidth;
             imageFrame.height = imageHeight;
-            imageFrame.loopCount = loopCount;
+            imageFrame.frameTime = frameDuration;
             imageFrame.sourceImage = (__bridge id)(imageRef);
+            imageFrame.property = nil;
             [imageFrames addObject: imageFrame];
             
             if (iter.blend_method == 0){
@@ -127,7 +128,7 @@ static void _freeWebpFrameImageData(void *info, const void *data, size_t size)
             
             CGImageRelease(imageRef);
             CGDataProviderRelease(provider);
-            duration += delayTime;
+            duration += frameDuration;
             
         } while (WebPDemuxNextFrame(&iter));
         
@@ -148,7 +149,8 @@ static void _freeWebpFrameImageData(void *info, const void *data, size_t size)
     printf("Decode webP:   %8.2f\n", f * 1000);
     
     HYImage *image = [[HYImage alloc] initWithFrames:imageFrames];
-    image.totalTime = duration;
+    image.animationDuration = duration;
+    image.loopCount = loopCount;
     image.width = width;
     image.height = height;
     

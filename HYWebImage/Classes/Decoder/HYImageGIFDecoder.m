@@ -38,6 +38,7 @@
     CGFloat totalTime = 0;
     NSUInteger orientationValue = 0;
     NSUInteger loopCount = 0;
+    CGFloat frameDuration = 0;
     
     for (size_t index = 0; index < frameCount; ++index)
     {
@@ -68,13 +69,18 @@
             CFNumberGetValue(loop, kCFNumberNSIntegerType, &loopCount);
         }
         
-        CGFloat unclampedDelayTime = [(NSNumber*)CFDictionaryGetValue(gifInfo, kCGImagePropertyGIFUnclampedDelayTime) floatValue];
-        if (unclampedDelayTime < 0.01){
+        frameDuration = [(NSNumber*)CFDictionaryGetValue(gifInfo, kCGImagePropertyGIFUnclampedDelayTime) floatValue];
+        if (!frameDuration){
             
-            unclampedDelayTime = 0.1;
+            frameDuration = [(NSNumber*)CFDictionaryGetValue(gifInfo, kCGImagePropertyGIFDelayTime) floatValue];
         }
         
-        totalTime += unclampedDelayTime;
+        if (frameDuration < 0.01) {
+            
+            frameDuration = 0.1;
+        }
+        
+        totalTime += frameDuration;
         
         CFTypeRef value = CFDictionaryGetValue(imageInfo, kCGImagePropertyOrientation);
         if (value){
@@ -84,9 +90,11 @@
         
         HYImageGIFFrame *frame = [[HYImageGIFFrame alloc] init];
         frame.sourceImage = (__bridge id)frameImage;
-        frame.unclampedDelayTime = unclampedDelayTime;
-        frame.loopCount = loopCount;
         frame.orientation = [self imageOrientationFromEXIFValue:orientationValue];
+        frame.index = index;
+        frame.width = gifWidth;
+        frame.height = gifHeight;
+        frame.property = (__bridge NSDictionary *)imageInfo;
         [imageFrames addObject:frame];
         
         CFRelease(imageInfo);
@@ -105,7 +113,8 @@
     printf("Decode Gif:   %8.2f\n", f * 1000);
     
     HYImage *image = [[HYImage alloc] initWithFrames:imageFrames];
-    image.totalTime = totalTime;
+    image.animationDuration = totalTime;
+    image.loopCount = loopCount;
     image.width = gifWidth;
     image.height = gifHeight;
     

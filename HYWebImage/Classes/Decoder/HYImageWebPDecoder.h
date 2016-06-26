@@ -15,10 +15,6 @@
     
 }
 
-@property (nonatomic, assign) NSUInteger loopCount;
-@property (nonatomic, assign) uint32_t width;
-@property (nonatomic, assign) uint32_t height;
-
 @end
 
 @interface HYImageWebPDecoder : HYImageDecoder

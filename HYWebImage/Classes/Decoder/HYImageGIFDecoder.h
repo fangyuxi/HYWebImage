@@ -14,8 +14,7 @@
     
 }
 
-@property (nonatomic, assign) CGFloat unclampedDelayTime;
-@property (nonatomic, assign) NSUInteger loopCount;
+
 
 @end
 

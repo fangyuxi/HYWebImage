@@ -15,5 +15,11 @@
 @property (nonatomic, strong) id sourceImage;
 @property (nonatomic, assign) NSUInteger index;
 @property (nonatomic, assign) UIImageOrientation orientation;
+@property (nonatomic, assign) NSTimeInterval frameTime;
+@property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGFloat width;
+
+@property (nonatomic, strong) NSDictionary *property;
+
 
 @end

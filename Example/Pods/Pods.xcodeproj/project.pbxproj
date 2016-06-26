@@ -44,6 +44,8 @@
 		355C44DDD4C89D2031459A7013C7CD0B /* quant_levels.h in Headers */ = {isa = PBXBuildFile; fileRef = A8A1C180B7213D764AD10ACF3E07BF62 /* quant_levels.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB83293A18928CD9C04802B22EF660 /* enc_mips32.c in Sources */ = {isa = PBXBuildFile; fileRef = 5428AE59613168BC76B00A8B8C3B5948 /* enc_mips32.c */; settings = {COMPILER_FLAGS = "-D_THREAD_SAFE -fno-objc-arc"; }; };
 		36A87C3CA62B7AC9FDB9702B5CCE03A3 /* muxinternal.c in Sources */ = {isa = PBXBuildFile; fileRef = 35A1D619D2C1FC80E76EBC87EA1FCFAE /* muxinternal.c */; settings = {COMPILER_FLAGS = "-D_THREAD_SAFE -fno-objc-arc"; }; };
+		376E43191D1FCA2500FE21B1 /* HYImagePNGDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 376E43171D1FCA2500FE21B1 /* HYImagePNGDecoder.h */; };
+		376E431A1D1FCA2500FE21B1 /* HYImagePNGDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E43181D1FCA2500FE21B1 /* HYImagePNGDecoder.m */; };
 		38A52CD1FF3C9C4D86394F192F4095FA /* HYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7698D7747B78D680FD5C9406C1FB3B9 /* HYCache.m */; };
 		39763CBEACCCE2EE114EDE2C57925302 /* picture_rescale.c in Sources */ = {isa = PBXBuildFile; fileRef = E73900B83FAABB868919322C2F557B73 /* picture_rescale.c */; settings = {COMPILER_FLAGS = "-D_THREAD_SAFE -fno-objc-arc"; }; };
 		3C06921F213010C827348C86044582F4 /* dec.c in Sources */ = {isa = PBXBuildFile; fileRef = 248F114EA4EE4F7C0899CBA2998EA1AD /* dec.c */; settings = {COMPILER_FLAGS = "-D_THREAD_SAFE -fno-objc-arc"; }; };
@@ -279,6 +281,8 @@
 		3407D36999D5E417AD4E31EF19C8BD7F /* muxread.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = muxread.c; path = src/mux/muxread.c; sourceTree = "<group>"; };
 		35A1D619D2C1FC80E76EBC87EA1FCFAE /* muxinternal.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = muxinternal.c; path = src/mux/muxinternal.c; sourceTree = "<group>"; };
 		36AC37888BB8C06ED12CAF87219E94D4 /* HYProgressiveImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HYProgressiveImage.m; sourceTree = "<group>"; };
+		376E43171D1FCA2500FE21B1 /* HYImagePNGDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImagePNGDecoder.h; sourceTree = "<group>"; };
+		376E43181D1FCA2500FE21B1 /* HYImagePNGDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImagePNGDecoder.m; sourceTree = "<group>"; };
 		388F4C1DA2DC82A4F6E8FE30FA6D8CD3 /* argb.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = argb.c; path = src/dsp/argb.c; sourceTree = "<group>"; };
 		391C09679AF0B48B17107A4F818E439A /* HYWebImageLock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HYWebImageLock.h; sourceTree = "<group>"; };
 		3A43CD724EED291854E0142E95C5EAFE /* rescaler_sse2.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = rescaler_sse2.c; path = src/dsp/rescaler_sse2.c; sourceTree = "<group>"; };
@@ -518,6 +522,8 @@
 				1397280A2332E0925703B14C078861FD /* HYImageJPGDecoder.m */,
 				E27316087AC43650EFA4BF078FE72B6C /* HYImageWebPDecoder.h */,
 				F2071335B12727988DD7CE1E0FF8682E /* HYImageWebPDecoder.m */,
+				376E43171D1FCA2500FE21B1 /* HYImagePNGDecoder.h */,
+				376E43181D1FCA2500FE21B1 /* HYImagePNGDecoder.m */,
 			);
 			path = Decoder;
 			sourceTree = "<group>";
@@ -939,6 +945,7 @@
 				CD93BD1028E52469B4CBFDE2CA03C326 /* HYImageDownloadOperation.h in Headers */,
 				6C743C34AE2C56FFB07088CE73D94FE2 /* HYImageFrame.h in Headers */,
 				72E9B4802C5BB650A2DCE99E2F09234E /* HYImageGIFDecoder.h in Headers */,
+				376E43191D1FCA2500FE21B1 /* HYImagePNGDecoder.h in Headers */,
 				583AC8269B9159164077C731567205A8 /* HYImageJPGDecoder.h in Headers */,
 				A5E7D53A95F343A313BE41817F4F4FF0 /* HYImageWebPDecoder.h in Headers */,
 				DE708288B75F32E79D875AC1D7B74011 /* HYProgressiveImage.h in Headers */,
@@ -1163,6 +1170,7 @@
 				FD63C03FB8D76195FC0C57EBA4FE52A1 /* HYProgressiveImage.m in Sources */,
 				89645EB8E272C53DDB9EE96B7065AB58 /* HYWebImage-dummy.m in Sources */,
 				524F62C0D0A0707E9DD483CF249F9593 /* HYWebImageLock.m in Sources */,
+				376E431A1D1FCA2500FE21B1 /* HYImagePNGDecoder.m in Sources */,
 				F37A903D0C37F24EE806E04D4BED2A10 /* NSData+HYImageTypeDetect.m in Sources */,
 				8E1DDEE364E7463FAE48F885396DF8F9 /* UIImageView+HYWebImage.m in Sources */,
 			);

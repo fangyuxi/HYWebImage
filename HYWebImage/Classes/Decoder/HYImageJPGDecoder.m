@@ -69,7 +69,10 @@
         HYImageJPGFrame *frame = [[HYImageJPGFrame alloc] init];
         frame.index = index;
         frame.sourceImage = (__bridge id)frameImage;
+        frame.width = width;
+        frame.height = height;
         frame.orientation = [self imageOrientationFromEXIFValue:orientationValue];
+        frame.property = (__bridge NSDictionary *)imageInfo;
         frame.isProgressiveJPG = isJPGProgressive;
         [imageFrames addObject:frame];
         
