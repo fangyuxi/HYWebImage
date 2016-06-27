@@ -44,7 +44,7 @@
     
         dispatch_async([HYDispatchQueuePool queueWithPriority:DISPATCH_QUEUE_PRIORITY_DEFAULT], ^{
             
-            [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"http://littlesvr.ca/apng/images/Contact.webp" options:HYWebImageOptionAllowInvalidSSLCertificates | HYWebImageOptionProgressive progressBlock:^(double progress) {
+            [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"https://s-media-cache-ak0.pinimg.com/1200x/2e/0c/c5/2e0cc5d86e7b7cd42af225c29f21c37f.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates progressBlock:^(double progress) {
                 
                 NSLog(@"%f", progress);
                 
@@ -70,10 +70,9 @@
         });
     }
     
-//    HYImageJPGDecoder * decoder = [HYImageJPGDecoder new];
-//    //NSString *path = [[NSBundle mainBundle] pathForResource:@"mew_progressive" ofType:@"jpg"];
-//    UIImage *image = [UIImage imageNamed:@"mew_progressive"];
-//    NSData *data = UIImageJPEGRepresentation(image, 1);
+//    HYImagePNGDecoder * decoder = [HYImagePNGDecoder new];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"mew_interlaced" ofType:@"png"];
+//    NSData *data = [NSData dataWithContentsOfFile:path];
 //    [decoder decodeImageData:data];
 }
 

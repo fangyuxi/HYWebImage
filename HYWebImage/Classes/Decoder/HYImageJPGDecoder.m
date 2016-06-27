@@ -17,7 +17,7 @@
 
 @implementation HYImageJPGDecoder
 
-- (HYImage *)decodeImageData:(NSData *)data
+- (HYImage *)decodeImageData:(NSData *)data redraw:(BOOL)reDraw
 {
     CFTimeInterval start = CACurrentMediaTime();
     
@@ -52,7 +52,7 @@
             width =  [(NSNumber*)CFDictionaryGetValue(imageInfo, kCGImagePropertyPixelWidth) floatValue];
             height = [(NSNumber*)CFDictionaryGetValue(imageInfo, kCGImagePropertyPixelHeight) floatValue];
             
-            CFDictionaryRef jpgInfo = CFDictionaryGetValue(imageInfo, kCGImagePropertyTIFFDictionary);
+            CFDictionaryRef jpgInfo = CFDictionaryGetValue(imageInfo, kCGImagePropertyJFIFDictionary);
             CFTypeRef value = CFDictionaryGetValue(jpgInfo, kCGImagePropertyJFIFIsProgressive);
             if (value) {
                 
@@ -64,6 +64,11 @@
         if (value)
         {
             CFNumberGetValue(value, kCFNumberNSIntegerType, &orientationValue);
+        }
+        
+        if (reDraw) {
+            
+            frameImage = [self redrawImage:frameImage];
         }
         
         HYImageJPGFrame *frame = [[HYImageJPGFrame alloc] init];

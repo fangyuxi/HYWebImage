@@ -16,7 +16,7 @@
     return [[[self class] alloc] init];
 }
 
-- (HYImage *)decodeImageData:(NSData *)data
+- (HYImage *)decodeImageData:(NSData *)data redraw:(BOOL)reDraw
 {
     [self doesNotRecognizeSelector:_cmd];
     return nil;
@@ -36,6 +36,40 @@
         case kCGImagePropertyOrientationRightMirrored: return UIImageOrientationRightMirrored;
         default: return UIImageOrientationUp;
     }
+}
+
+- (CGImageRef)redrawImage:(CGImageRef)imageRef
+{
+    if (!imageRef){
+    
+        return NULL;
+    }
+    
+    size_t width = CGImageGetWidth(imageRef);
+    size_t height = CGImageGetHeight(imageRef);
+    if (width == 0 || height == 0){
+    
+        return NULL;
+    }
+    
+    CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(imageRef) & kCGBitmapAlphaInfoMask;
+    BOOL hasAlpha = NO;
+    if (alphaInfo == kCGImageAlphaPremultipliedLast ||
+        alphaInfo == kCGImageAlphaPremultipliedFirst ||
+        alphaInfo == kCGImageAlphaLast ||
+        alphaInfo == kCGImageAlphaFirst) {
+        
+        hasAlpha = YES;
+    }
+    
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Host;
+    bitmapInfo |= hasAlpha ? kCGImageAlphaPremultipliedFirst : kCGImageAlphaNoneSkipFirst;
+    CGContextRef context = CGBitmapContextCreate(NULL, width, height, 8, 0, CGColorSpaceCreateDeviceRGB(), bitmapInfo);
+    if (!context) return NULL;
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
+    CGImageRef newImage = CGBitmapContextCreateImage(context);
+    CFRelease(context);
+    return newImage;
 }
 
 @end

@@ -16,6 +16,13 @@
 
 @interface HYImageDecoderFactory : HYImageDecoder
 
+/**
+ *  根据图片类型，返回响应的解码器
+ *
+ *  @param type type
+ *
+ *  @return decoder
+ */
 + (HYImageDecoder *)decoder:(HYImageType)type;
 
 @end

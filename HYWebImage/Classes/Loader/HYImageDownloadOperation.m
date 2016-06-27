@@ -457,7 +457,7 @@ didCompleteWithError:(nullable NSError *)error
         HYImageDecoder *decoder = [HYImageDecoderFactory decoder:[_data detectType]];
         if (decoder)
         {
-            HYImage *image = [decoder decodeImageData:_data];
+            HYImage *image = [decoder decodeImageData:_data redraw:YES];
             
             [self performSelector:@selector(_didReceiveImageFromWeb:)
                          onThread:NetworkThread

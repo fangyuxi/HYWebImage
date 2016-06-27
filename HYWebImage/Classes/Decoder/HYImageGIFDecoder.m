@@ -17,7 +17,7 @@
 
 @implementation HYImageGIFDecoder
 
-- (HYImage *)decodeImageData:(NSData *)data
+- (HYImage *)decodeImageData:(NSData *)data redraw:(BOOL)reDraw
 {
     CFTimeInterval start = CACurrentMediaTime();
     
@@ -63,7 +63,7 @@
             continue;
         }
         
-        CFTypeRef loop = CFDictionaryGetValue(imageInfo, kCGImagePropertyGIFLoopCount);
+        CFTypeRef loop = CFDictionaryGetValue(gifInfo, kCGImagePropertyGIFLoopCount);
         if (loop){
             
             CFNumberGetValue(loop, kCFNumberNSIntegerType, &loopCount);
@@ -86,6 +86,11 @@
         if (value){
             
             CFNumberGetValue(value, kCFNumberNSIntegerType, &orientationValue);
+        }
+        
+        if (reDraw) {
+            
+            frameImage = [self redrawImage:frameImage];
         }
         
         HYImageGIFFrame *frame = [[HYImageGIFFrame alloc] init];

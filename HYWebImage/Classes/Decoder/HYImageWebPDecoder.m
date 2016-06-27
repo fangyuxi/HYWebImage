@@ -25,7 +25,7 @@ static void _freeWebpFrameImageData(void *info, const void *data, size_t size)
     free((void*)data);
 }
 
-- (HYImage *)decodeImageData:(NSData *)imageData
+- (HYImage *)decodeImageData:(NSData *)imageData redraw:(BOOL)reDraw
 {
     CFTimeInterval start = CACurrentMediaTime();
     
@@ -113,6 +113,11 @@ static void _freeWebpFrameImageData(void *info, const void *data, size_t size)
                                                 YES,
                                                 renderingIntent);
             
+            if (reDraw) {
+                
+                imageRef = [self redrawImage:imageRef];
+            }
+            
             HYImageWebPFrame *imageFrame = [[HYImageWebPFrame alloc] init];
             imageFrame.width = imageWidth;
             imageFrame.height = imageHeight;
@@ -154,26 +159,6 @@ static void _freeWebpFrameImageData(void *info, const void *data, size_t size)
     image.width = width;
     image.height = height;
     
-//    IKWebPAnimatedImage *animatedImage = [[IKWebPAnimatedImage alloc] initWithImageFrames: imageFrames];
-//    float (^toColorf)(uint32_t, int) = ^(uint32_t color, int shift){
-//        return (color >> shift) / 255.f;
-//    };
-//#if TARGET_OS_IPHONE
-//    animatedImage.backgroundColor = [IKColor colorWithRed: toColorf(bgColor, 0)
-//                                                    green: toColorf(bgColor, 8)
-//                                                     blue: toColorf(bgColor, 16)
-//                                                    alpha: toColorf(bgColor, 24)];
-//#elif TARGET_OS_MAC
-//    animatedImage.backgroundColor = [IKColor colorWithDeviceRed: toColorf(bgColor, 0)
-//                                                          green: toColorf(bgColor, 8)
-//                                                           blue: toColorf(bgColor, 16)
-//                                                          alpha: toColorf(bgColor, 24)];
-//#endif
-//    
-//    animatedImage.totalTime = totalTime;
-//    animatedImage.imageWidth = width;
-//    animatedImage.imageHeight = height;
-//    animatedImage.hasBlendMode = hasBlendMode;
     return image;
 }
 

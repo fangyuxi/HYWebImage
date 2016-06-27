@@ -14,6 +14,9 @@
     
 }
 
+/**
+ *  这个jpg是否支持渐进式显示
+ */
 @property (nonatomic, assign) BOOL isProgressiveJPG;
 
 @end
