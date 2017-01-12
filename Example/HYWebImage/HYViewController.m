@@ -44,7 +44,7 @@
     
         dispatch_async([HYDispatchQueuePool queueWithPriority:DISPATCH_QUEUE_PRIORITY_DEFAULT], ^{
             
-            [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"https://s-media-cache-ak0.pinimg.com/1200x/2e/0c/c5/2e0cc5d86e7b7cd42af225c29f21c37f.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates progressBlock:^(double progress) {
+            [[HYImageDownloadManager sharedManager] downloadImageWithURL:@"https://s-media-cache-ak0.pinimg.com/1200x/2e/0c/c5/2e0cc5d86e7b7cd42af225c29f21c37f.jpg" options:HYWebImageOptionAllowInvalidSSLCertificates | HYWebImageOptionProgressive progressBlock:^(double progress) {
                 
                 NSLog(@"%f", progress);
                 

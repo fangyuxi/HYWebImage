@@ -37,6 +37,9 @@ typedef NS_OPTIONS(NSUInteger, HYWebImageOptions) {
     
     //是否自动将图片设置给ImageView
     HYWebImageOptionAvoidSetImage = 1 << 7,
+    
+    //是否重绘提高渲染效率
+    HYWebImageRedrawImageBeforeComplete = 1 << 8
 };
 
 /** complete block 回调的类型 **/
